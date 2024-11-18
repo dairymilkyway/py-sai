@@ -1,3 +1,11 @@
-.env
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
 db.sqlite3
-.vercel
+media/
+static/
+.env
+.vscode/
+node_modules/
