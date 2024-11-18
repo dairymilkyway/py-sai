@@ -237,48 +237,53 @@ const Home = () => {
                 <Box sx={{ overflowY: "auto", maxHeight: "70vh" }}>
                     {filteredNotes.map((note) => (
                         <Paper
-                        key={note.id}
-                        onClick={() => handleNoteClick(note)}
-                        sx={{
-                            padding: "1rem",
-                            marginBottom: "1rem",
-                            backgroundColor: darkMode ? "#172a45" : "#fff",
-                            cursor: "pointer",
-                            transition: "transform 0.2s ease",
-                            "&:hover": { transform: "scale(1.05)" },
-                            position: "relative",
-                        }}
-                        >
-                        {/* Delete Icon */}
-                        <Box
+                            key={note.id}
+                            onClick={() => handleNoteClick(note)}
                             sx={{
-                            position: "absolute",
-                            top: "8px",
-                            right: "8px",
-                            cursor: "pointer",
-                            color: "#ff6b6b",
-                            "&:hover": { color: "#e63946" },
-                            }}
-                            onClick={(e) => {
-                            e.stopPropagation(); // Prevent triggering the parent onClick
-                            deleteNote(note.id);
+                                padding: "1rem",
+                                marginBottom: "1rem",
+                                backgroundColor: darkMode ? "#172a45" : "#fff",
+                                cursor: "pointer",
+                                transition: "transform 0.2s ease",
+                                "&:hover": { transform: "scale(1.05)" },
+                                position: "relative",
                             }}
                         >
-                            <CloseIcon />
-                        </Box>
+                            {/* Delete Icon */}
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: "8px",
+                                    right: "8px",
+                                    cursor: "pointer",
+                                    color: "#ff6b6b",
+                                    "&:hover": { color: "#e63946" },
+                                }}
+                                onClick={(e) => {
+                                    e.stopPropagation(); // Prevent triggering the parent onClick
+                                    deleteNote(note.id);
+                                }}
+                            >
+                                <CloseIcon />
+                            </Box>
 
-                        {/* Note Title */}
-                        <Typography variant="h6" sx={{ color: "#0ea5e9", fontWeight: "bold" }}>
-                            {note.title}
-                        </Typography>
+                            {/* Note Title */}
+                            <Typography variant="h6" sx={{ color: "#0ea5e9", fontWeight: "bold" }}>
+                                {note.title}
+                            </Typography>
 
-                        {/* Note Content */}
-                        <Typography variant="body2" sx={{ color: "#94a3b8", marginTop: "0.5rem" }}>
-                            {note.content.substring(0, 100)}...
-                        </Typography>
+                            {/* Note Content */}
+                            <Typography variant="body2" sx={{ color: "#94a3b8", marginTop: "0.5rem" }}>
+                                {note.content.substring(0, 100)}...
+                            </Typography>
+
+                            {/* Note Creation Date */}
+                            <Typography variant="caption" sx={{ color: "#94a3b8", marginTop: "0.5rem", display: "block" }}>
+                                Created on: {new Date(note.created_at).toLocaleDateString()} at {new Date(note.created_at).toLocaleTimeString()}
+                            </Typography>
                         </Paper>
                     ))}
-</Box>
+                </Box>
 
             </Box>
             <Box
